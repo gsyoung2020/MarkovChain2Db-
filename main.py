@@ -70,18 +70,19 @@ generator_2 = POSifiedText(combined_sents, state_size=3)
 
 
 #now we will use the above generator to generate sentences
+# I (grant) commented this one out as the sentences "some what" string together and would like to do more research
+#for i in range(5):
+  #sentence = generator_2.make_sentence()
 
-for i in range(5):
-  sentence = generator_2.make_sentence()
-
-  print(sentence)
+  #print(sentence)
  
 #print 100 characters or less sentences
-print("")
+#print("")
 
-for i in range(5):
+#this sentence gen makes tweet size lengts of 140, google say new is 280 gonna keep simple til i do some research 
+for i in range(10):
 
-  captured = generator_2.make_short_sentence(max_chars=100)
+  captured = generator_2.make_short_sentence(max_chars=140)
   
   print(captured)
 
