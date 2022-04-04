@@ -4,6 +4,11 @@ import markovify
 import nltk
 from nltk.corpus import gutenberg
 import warnings
+import sqlite3
+
+connection = sqlite3.connect("Markov.db")
+
+print(connection.total_changes)
 
 warnings.filterwarnings('ignore')
 
