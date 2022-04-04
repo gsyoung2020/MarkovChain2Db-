@@ -7,6 +7,8 @@ import warnings
 import sqlite3
 
 connection = sqlite3.connect("Markov.db")
+cursor = connection.cursor()
+#cursor.execute("CREATE TABLE chatter (sentence TEXT, chat_number INTEGER)")
 
 print(connection.total_changes)
 
@@ -69,11 +71,6 @@ class POSifiedText(markovify.Text):
 #Call the class on our text
 generator_2 = POSifiedText(combined_sents, state_size=3)
 
-#Call for Google's Firebase
-
-
-
-
 #now we will use the above generator to generate sentences
 # I (grant) commented this one out as the sentences "some what" string together and would like to do more research
 #for i in range(5):
@@ -86,8 +83,10 @@ generator_2 = POSifiedText(combined_sents, state_size=3)
 
 #this sentence gen makes tweet size lengts of 140, google say new is 280 gonna keep simple til i do some research 
 for i in range(10):
-
+  loop = i
   captured = generator_2.make_short_sentence(max_chars=140)
+  cursor.execute('INSERT INTO chatter VALUES (' + captured + '),' + '(' + str(loop) + ')' )
+ 
   
   print(captured)
 
