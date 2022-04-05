@@ -85,9 +85,12 @@ generator_2 = POSifiedText(combined_sents, state_size=3)
 for i in range(10):
   loop = i
   captured = generator_2.make_short_sentence(max_chars=140)
-  cursor.execute('INSERT INTO chatter VALUES (' + captured + '),' + '(' + str(loop) + ')' )
- 
-  
-  print(captured)
+  sql = f"INSERT INTO chatter VALUES ('{captured}',{loop})" 
+  sql = sql.replace("'", "''")
+  print(sql) 
+  cursor.execute(sql)
+  #print(type(captured))
+  sql = "INSERT INTO chatter VALUES (?,?)"
+  cursor.execute(sql, (captured, loop))
 
 
