@@ -10,6 +10,8 @@ numpy = "^1.22.2"
 spacy = "^3.2.4"
 nltk = "^3.7"
 markovify = "^0.9.4"
+Flask = "^2.1.2"
+requests = "^2.27.1"
 
 [tool.poetry.dev-dependencies]
 
