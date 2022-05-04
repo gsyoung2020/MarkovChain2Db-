@@ -10,6 +10,11 @@ connection = sqlite3.connect("Markov.db")
 cursor = connection.cursor()
 #cursor.execute("CREATE TABLE chatter (sentence TEXT, chat_number INTEGER)")
 
+cursor.execute("select max(RowId) from chatter") 
+num = list(cursor)[0]
+print(num[0])
+number = num[0]
+
 print(connection.total_changes)
 
 warnings.filterwarnings('ignore')
@@ -122,7 +127,7 @@ for i in range(5):
 
   output = decontracted(poss)
   sql = "INSERT INTO chatter VALUES (?,?)"
-  cursor.execute(sql, (output, loop))
+  cursor.execute(sql, (output, loop + number))
   connection.commit()
   print(decontracted(poss))
  # print("----------")
