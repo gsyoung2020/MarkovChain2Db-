@@ -29,11 +29,11 @@ print("end")
 app = flask.Flask(__name__)
 sess = requests.Session()
 
-app.config["DEBUG"] = True
+#app.config["DEBUG"] = True
 
 
 @app.route("/", defaults={"path": ""}, methods=["GET", "POST", "DELETE"])
 @app.route("/<path:path>", methods=["GET", "POST", "DELETE"])
 def api_all(path):
     return jsonify(tweets)
-app.run("0.0.0.0")
+app.run(host='0.0.0.0',port=5000)
