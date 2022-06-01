@@ -6,6 +6,8 @@ from nltk.corpus import gutenberg
 import warnings
 import sqlite3
 
+print("The Markov Chain Initialize")
+
 connection = sqlite3.connect("Markov.db")
 cursor = connection.cursor()
 #cursor.execute("CREATE TABLE chatter (sentence TEXT, chat_number INTEGER)")
@@ -130,4 +132,4 @@ for i in range(5):
   cursor.execute(sql, (output, loop + number))
   connection.commit()
   print(decontracted(poss))
- # print("----------")
+print("-----CLOSING THE CHAIN-----")
